@@ -5,32 +5,32 @@ class MySolution {
    this.flag = false; // this is optional to use;
   }
 
-  binarySearch(nums, target) {
-    let low = 0;
-    let high = nums.length-1;
-    let mid = Math.floor(low+high/2);
+  binarySearch(nums, target) {  // for some reason this doesnt work for all cases
+    let low = 0;                         // set low
+    let high = nums.length-1;            // and high
+    let mid = Math.floor(low+high/2);   //and mid
 
-    if (nums[mid] == target){
-      return true;
+    if (nums[mid] == target){ // check if mid value = target
+      return true;            // if so return true
     }
 
-    if (low == high){
-      return false;
+    if (low == high){         //check if low = high (only 1 number remaining.)
+      return false;           //if so false
     }
     
-    if (nums[mid] > target){
-      let arr = [];
-      for(let i = 0; i < mid; i++){
-        arr.push(nums[i]);
+    if (nums[mid] > target){                    //if target is less than mid...
+      let arr = [];                             //make new array
+      for(let i = 0; i < mid; i++){             
+        arr.push(nums[i]);                      //copy entries up until mid into new array
       }
-      return this.binarySearch(arr, target);
+      return this.binarySearch(arr, target);    //recursion
     }
-    else{
-      let arr = [];
-      for (let i = mid; i < nums.length-1; i++){
-        arr.push(nums[i]);
-      }
-      return this.binarySearch(arr, target);
+    else{                                         //if target is more than mid...
+      let arr = [];                               // create new array
+      for (let i = mid; i < nums.length-1; i++){  
+        arr.push(nums[i]);                        //copy everything from mid until the end of nums into new array
+      }                                   
+      return this.binarySearch(arr, target);      //recursion
     }
 
   }
