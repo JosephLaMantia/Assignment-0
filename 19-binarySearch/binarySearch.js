@@ -6,12 +6,16 @@ class MySolution {
   }
 
   binarySearch(nums, target) {
-    let low = nums[0];
-    let high = nums[nums.length-1];
+    let low = 0;
+    let high = nums.length-1;
     let mid = Math.floor(low+high/2);
 
     if (nums[mid] == target){
       return true;
+    }
+
+    if (low == high){
+      return false;
     }
     
     if (nums[mid] > target){
